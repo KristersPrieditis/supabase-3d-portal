@@ -4,6 +4,15 @@ import { useState, useEffect } from 'react'
 import { supabase } from '@/supabaseClient'
 import { useRouter } from 'next/navigation'
 
+type Asset = {
+  id: string
+  name: string
+  url: string
+  tags: string[]
+  user_id: string
+  created_at?: string
+}
+
 // 🔐 Redirects to login if not logged in
 const useRedirectIfNotLoggedIn = () => {
   const router = useRouter()
@@ -32,7 +41,7 @@ export default function DashboardPage() {
   const [name, setName] = useState('')
   const [tags, setTags] = useState('')
   const [error, setError] = useState<string | null>(null)
-  const [assets, setAssets] = useState<any[]>([])
+  const [assets, setAssets] = useState<Asset[]>([])
 
   // 📥 Fetch user's uploaded assets
   useEffect(() => {
