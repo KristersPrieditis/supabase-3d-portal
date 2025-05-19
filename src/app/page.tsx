@@ -1,9 +1,18 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useEffect } from 'react' ;
 
 export default function HomePage() {
   const router = useRouter()
+
+  useEffect(() => {
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+  }, []);
+
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen gap-6 bg-black text-white p-6">
