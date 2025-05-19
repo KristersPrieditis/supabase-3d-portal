@@ -2,12 +2,13 @@
 
 import { useRouter } from 'next/navigation'
 
+
 export default function HomePage() {
   const router = useRouter()
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen gap-6 bg-black text-white p-6">
-      <h1 className="text-3xl font-bold">Welcome to 3D Portal</h1>
+      <h1 className="text-3xl font-bold">ArtSpace</h1>
 
       <div className="flex gap-4">
         <button
