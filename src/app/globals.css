@@ -2,16 +2,13 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-
-
+/* CSS Variables */
 :root {
   --background: #ece9e2;
   --foreground: #5a8d92;
   --font-sans: 'Open Sans', Arial, Helvetica, sans-serif;
   --font-mono: 'Courier New', monospace;
 }
-
-
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -20,9 +17,105 @@
   }
 }
 
+/* Base Reset */
+* {
+  box-sizing: border-box;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans)
-  ;
+  font-family: var(--font-sans);
+  padding: 10px;
+  background: #f1f1f1;
 }
+
+/* Header/Blog Title */
+.blog-header {
+  padding: 30px !important;
+  text-align: center !important;
+  background: white !important;
+}
+
+.header h1 {
+  font-size: 50px;
+}
+
+/* Navigation Bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Columns */
+.leftcolumn {
+  float: left;
+  width: 75%;
+}
+
+.rightcolumn {
+  float: left;
+  width: 25%;
+  background-color: #f1f1f1;
+  padding-left: 20px;
+}
+
+/* Image Placeholder */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Article Cards */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Clearfix */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+/* Responsive Layout */
+@media screen and (max-width: 800px) {
+  .leftcolumn,
+  .rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+
