@@ -5,8 +5,8 @@
 
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #ece9e2;
+  --foreground: #5a8d92;
   --font-sans: 'Open Sans', Arial, Helvetica, sans-serif;
   --font-mono: 'Courier New', monospace;
 }
@@ -15,8 +15,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #ece9e2;
-    --foreground: #5a8d92;
+    --background: #ffffff;
+    --foreground: #171717;
   }
 }
 
