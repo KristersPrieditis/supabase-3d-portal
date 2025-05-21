@@ -1,8 +1,8 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import Header from '../components/Header'
 import Navbar from '../components/Navbar'
+import Header from '../components/Header'
 import ArticleCard from '../components/ArticleCard'
 import Sidebar from '../components/Sidebar'
 import Footer from '../components/Footer'
@@ -13,6 +13,7 @@ export default function HomePage() {
   return (
     <main className="bg-gray-100 text-gray-900 min-h-screen p-4">
       <Header />
+
       <Navbar />
 
       <section className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
@@ -29,7 +30,7 @@ export default function HomePage() {
           />
         </div>
 
-        <Sidebar />
+       
       </section>
 
       <Footer />
@@ -47,6 +48,8 @@ export default function HomePage() {
         >
           Dashboard
         </button>
+
+        
       </div>
     </main>
   )
