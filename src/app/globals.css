@@ -37,7 +37,7 @@ body {
   background: white !important;
 }
 
-.header h1 {
+.blog-header h1 {
   font-size: 50px;
 }
 
@@ -47,6 +47,7 @@ body {
   background-color: #333;
 }
 
+/* Navbar links */
 .topnav a {
   float: left;
   display: block;
@@ -56,10 +57,12 @@ body {
   text-decoration: none;
 }
 
+/* Links - change color on hover */
 .topnav a:hover {
   background-color: #ddd;
   color: black;
 }
+/* navbar end */
 
 /* Columns */
 .leftcolumn {
