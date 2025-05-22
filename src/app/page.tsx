@@ -12,13 +12,13 @@ export default function HomePage() {
       <div className="flex gap-4">
         <button
           onClick={() => router.push('/login')}
-          className="px-6 py-2 bg-blue-600 text-white rounded shadow hover:bg-blue-700"
+          className="px-6 py-2 bg-red-600 text-white rounded shadow hover:bg-red-700"
         >
           Login
         </button>
         <button
           onClick={() => router.push('/dashboard')}
-          className="px-6 py-2 bg-green-600 text-white rounded shadow hover:bg-green-700"
+          className="px-6 py-2 bg-red-600 text-white rounded shadow hover:bg-red-700"
         >
           Dashboard
         </button>
