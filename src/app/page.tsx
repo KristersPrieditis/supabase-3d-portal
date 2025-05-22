@@ -1,55 +1,38 @@
+
 'use client'
 
 import { useRouter } from 'next/navigation'
-import Navbar from '../components/Navbar'
-import Header from '../components/Header'
-import ArticleCard from '../components/ArticleCard'
-import Sidebar from '../components/Sidebar'
-import Footer from '../components/Footer'
+import Image from 'next/image'
 
 export default function HomePage() {
   const router = useRouter()
 
   return (
-    <main className="bg-gray-100 text-gray-900 min-h-screen p-4">
-      <Header />
+    <main className="flex flex-col items-center justify-center min-h-screen gap-6 bg-black text-white p-6">
+      {/* Logo */}
+      <Image
+        src="/greyLogo.png" // or use an external URL like "https://example.com/logo.png"
+        alt="3D Portal Logo"
+        width={120}
+        height={120}
+        className="mb-4"
+      />
 
-      <Navbar />
+      <h1 className="text-3xl font-bold">Welcome to 3D Portal</h1>
 
-      <section className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
-        <div className="md:col-span-3 space-y-6">
-          <ArticleCard
-            title="TITLE HEADING"
-            description="Title description"
-            date="Dec 7, 2017"
-          />
-          <ArticleCard
-            title="TITLE HEADING"
-            description="Title description"
-            date="Sep 2, 2017"
-          />
-        </div>
-
-       
-      </section>
-
-      <Footer />
-
-      <div className="flex gap-4 justify-center mt-8">
+      <div className="flex gap-4">
         <button
           onClick={() => router.push('/login')}
-          className="px-6 py-2 bg-blue-600 text-white rounded shadow hover:bg-blue-700"
+          className="px-6 py-2 bg-red-600 text-white rounded shadow hover:bg-red-700"
         >
           Login
         </button>
         <button
           onClick={() => router.push('/dashboard')}
-          className="px-6 py-2 bg-green-600 text-white rounded shadow hover:bg-green-700"
+          className="px-6 py-2 bg-red-600 text-white rounded shadow hover:bg-red-700"
         >
           Dashboard
         </button>
-
-        
       </div>
     </main>
   )
