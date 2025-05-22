@@ -1,12 +1,22 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 
 export default function HomePage() {
   const router = useRouter()
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen gap-6 bg-black text-white p-6">
+      {/* Logo */}
+      <Image
+        src="/logo.png" // or use an external URL like "https://example.com/logo.png"
+        alt="3D Portal Logo"
+        width={120}
+        height={120}
+        className="mb-4"
+      />
+
       <h1 className="text-3xl font-bold">Welcome to 3D Portal</h1>
 
       <div className="flex gap-4">
