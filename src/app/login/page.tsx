@@ -39,8 +39,11 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen gap-4 p-6">
-      <h1 className="text-2xl font-bold">Login or Register</h1>
+    <main
+      className="flex flex-col items-center justify-center min-h-screen gap-4 p-6"
+      style={{ backgroundColor: '#4B5320' }}
+    >
+      <h1 className="text-2xl font-bold text-white">Login or Register</h1>
 
       <input
         type="email"
@@ -58,7 +61,7 @@ export default function LoginPage() {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      {error && <p className="text-red-600">{error}</p>}
+      {error && <p className="text-red-200">{error}</p>}
 
       <button onClick={handleLogin} className="p-2 bg-blue-600 text-white rounded w-64">
         Log In
