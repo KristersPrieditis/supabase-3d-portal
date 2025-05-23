@@ -7,28 +7,29 @@ export default function HomePage() {
   const router = useRouter()
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen gap-6 bg-black text-white p-6">
-      {/* Logo */}
-      <Image
-        src="/logo.png" // or use an external URL like "https://example.com/logo.png"
-        alt="3D Portal Logo"
-        width={120}
-        height={120}
-        className="mb-4"
-      />
+    <main className="relative flex flex-col items-center justify-center min-h-screen gap-6 bg-[var(--background)] text-[var(--foreground)] p-6">
+      {/* Logo in top-left corner */}
+      <div className="absolute top-6 left-6">
+        <Image
+          src="/logo.png"
+          alt="3D Portal Logo"
+          width={80}
+          height={80}
+        />
+      </div>
 
-      <h1 className="text-3xl font-bold">Welcome to 3D Portal</h1>
+      <h1 className="text-3xl font-bold">ArtSpace</h1>
 
       <div className="flex gap-4">
         <button
           onClick={() => router.push('/login')}
-          className="px-6 py-2 bg-red-600 text-white rounded shadow hover:bg-red-700"
+          className="px-6 py-2 bg-[#5a8d92] text-white rounded shadow hover:bg-red-700"
         >
           Login
         </button>
         <button
           onClick={() => router.push('/dashboard')}
-          className="px-6 py-2 bg-red-600 text-white rounded shadow hover:bg-red-700"
+          className="px-6 py-2 bg-[#5a8d92] text-white rounded shadow hover:bg-red-700"
         >
           Dashboard
         </button>
