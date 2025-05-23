@@ -42,6 +42,9 @@ export default function DashboardPage() {
   const [tags, setTags] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [assets, setAssets] = useState<Asset[]>([])
+  const [length, setLength] = useState('')
+  const [height, setHeight] = useState('')
+  const [width, setWidth] = useState('')
 
   // 📥 Fetch user's uploaded assets
   useEffect(() => {
@@ -72,6 +75,12 @@ export default function DashboardPage() {
       return
     }
 
+    if (!length || !height || !width) {
+  setError('Please provide all size dimensions.')
+  return
+}
+
+
     const { data: sessionData, error: sessionError } = await supabase.auth.getSession()
     const user = sessionData?.session?.user
     
@@ -97,28 +106,37 @@ const filePath = `${user.id}/${Date.now()}-${cleanFileName}`
       return
     }
 
-    try {
-      const { error: dbError } = await supabase.from('assets').insert({
-        user_id: user.id,
-        name,
-        url: filePath,
-        tags: tags.split(',').map((t) => t.trim())
-      })
-
-      if (dbError) {
-        console.error("Insert DB error:", dbError)
-        setError('Failed to save metadata: ' + dbError.message)
-      } else {
-        setFile(null)
-        setName('')
-        setTags('')
-        alert('Upload successful!')
-        location.reload() // refresh to show uploaded asset
-      }
-    } catch (err) {
-      console.error("Insert failed with exception:", err)
-      setError('Unexpected error while saving to database.')
+try {
+  const { error: dbError } = await supabase.from('assets').insert({
+    user_id: user.id,
+    name,
+    url: filePath,
+    tags: tags.split(',').map((t) => t.trim()),
+    size: {
+      length: Number(length),
+      height: Number(height),
+      width: Number(width)
     }
+  })
+
+  if (dbError) {
+    console.error("Insert DB error:", dbError)
+    setError('Failed to save metadata: ' + dbError.message)
+  } else {
+    setFile(null)
+    setName('')
+    setTags('')
+    setLength('')
+    setHeight('')
+    setWidth('')
+    alert('Upload successful!')
+    location.reload() // refresh to show uploaded asset
+  }
+} catch (err) {
+  console.error("Insert failed with exception:", err)
+  setError('Unexpected error while saving to database.')
+  }
+  
   }
 
   const handleLogout = async () => {
@@ -151,6 +169,31 @@ const filePath = `${user.id}/${Date.now()}-${cleanFileName}`
         value={tags}
         onChange={(e) => setTags(e.target.value)}
       />
+
+  <div className="flex flex-col gap-2 w-64">
+  <label className="font-semibold">Size (in cm)</label>
+  <input
+    type="number"
+    placeholder="Length"
+    className="p-2 border rounded"
+    value={length}
+    onChange={(e) => setLength(e.target.value)}
+  />
+  <input
+    type="number"
+    placeholder="Height"
+    className="p-2 border rounded"
+    value={height}
+    onChange={(e) => setHeight(e.target.value)}
+  />
+  <input
+    type="number"
+    placeholder="Width"
+    className="p-2 border rounded"
+    value={width}
+    onChange={(e) => setWidth(e.target.value)}
+  />
+</div>
 
       <input
         type="file"
