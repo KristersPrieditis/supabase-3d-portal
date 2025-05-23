@@ -80,6 +80,10 @@ export default function DashboardPage() {
   return
 }
 
+if (!file.name.endsWith('.glb') && !file.name.endsWith('.gltf')) {
+  setError('Only .glb and .gltf files are supported.')
+  return
+}
 
     const { data: sessionData, error: sessionError } = await supabase.auth.getSession()
     const user = sessionData?.session?.user
@@ -195,12 +199,18 @@ try {
   />
 </div>
 
-      <input
-        type="file"
-        accept=".glb,.fbx,.obj"
-        className="p-2 w-64"
-        onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-      />
+<input
+  type="file"
+  accept=".glb,.gltf"
+  className="p-2 w-64"
+  onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+/>
+
+<p className="text-sm text-gray-500 -mt-2 mb-2">
+  Only <code>.glb</code> and <code>.gltf</code> files are supported
+</p>
+
+
 
       {error && <p className="text-red-600">{error}</p>}
 
