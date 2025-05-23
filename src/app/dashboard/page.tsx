@@ -42,6 +42,9 @@ export default function DashboardPage() {
   const [tags, setTags] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [assets, setAssets] = useState<Asset[]>([])
+  const [length, setLength] = useState('')
+  const [height, setHeight] = useState('')
+  const [width, setWidth] = useState('')
 
   // 📥 Fetch user's uploaded assets
   useEffect(() => {
@@ -72,6 +75,16 @@ export default function DashboardPage() {
       return
     }
 
+    if (!length || !height || !width) {
+  setError('Please provide all size dimensions.')
+  return
+}
+
+if (!file.name.endsWith('.glb') && !file.name.endsWith('.gltf')) {
+  setError('Only .glb and .gltf files are supported.')
+  return
+}
+
     const { data: sessionData, error: sessionError } = await supabase.auth.getSession()
     const user = sessionData?.session?.user
     
@@ -97,28 +110,37 @@ const filePath = `${user.id}/${Date.now()}-${cleanFileName}`
       return
     }
 
-    try {
-      const { error: dbError } = await supabase.from('assets').insert({
-        user_id: user.id,
-        name,
-        url: filePath,
-        tags: tags.split(',').map((t) => t.trim())
-      })
-
-      if (dbError) {
-        console.error("Insert DB error:", dbError)
-        setError('Failed to save metadata: ' + dbError.message)
-      } else {
-        setFile(null)
-        setName('')
-        setTags('')
-        alert('Upload successful!')
-        location.reload() // refresh to show uploaded asset
-      }
-    } catch (err) {
-      console.error("Insert failed with exception:", err)
-      setError('Unexpected error while saving to database.')
+try {
+  const { error: dbError } = await supabase.from('assets').insert({
+    user_id: user.id,
+    name,
+    url: filePath,
+    tags: tags.split(',').map((t) => t.trim()),
+    size: {
+      length: Number(length),
+      height: Number(height),
+      width: Number(width)
     }
+  })
+
+  if (dbError) {
+    console.error("Insert DB error:", dbError)
+    setError('Failed to save metadata: ' + dbError.message)
+  } else {
+    setFile(null)
+    setName('')
+    setTags('')
+    setLength('')
+    setHeight('')
+    setWidth('')
+    alert('Upload successful!')
+    location.reload() // refresh to show uploaded asset
+  }
+} catch (err) {
+  console.error("Insert failed with exception:", err)
+  setError('Unexpected error while saving to database.')
+  }
+  
   }
 
   const handleLogout = async () => {
@@ -152,12 +174,43 @@ const filePath = `${user.id}/${Date.now()}-${cleanFileName}`
         onChange={(e) => setTags(e.target.value)}
       />
 
-      <input
-        type="file"
-        accept=".glb,.fbx,.obj"
-        className="p-2 w-64"
-        onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-      />
+  <div className="flex flex-col gap-2 w-64">
+  <label className="font-semibold">Size (in cm)</label>
+  <input
+    type="number"
+    placeholder="Length"
+    className="p-2 border rounded"
+    value={length}
+    onChange={(e) => setLength(e.target.value)}
+  />
+  <input
+    type="number"
+    placeholder="Height"
+    className="p-2 border rounded"
+    value={height}
+    onChange={(e) => setHeight(e.target.value)}
+  />
+  <input
+    type="number"
+    placeholder="Width"
+    className="p-2 border rounded"
+    value={width}
+    onChange={(e) => setWidth(e.target.value)}
+  />
+</div>
+
+<input
+  type="file"
+  accept=".glb,.gltf"
+  className="p-2 w-64"
+  onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+/>
+
+<p className="text-sm text-gray-500 -mt-2 mb-2">
+  Only <code>.glb</code> and <code>.gltf</code> files are supported
+</p>
+
+
 
       {error && <p className="text-red-600">{error}</p>}
 
