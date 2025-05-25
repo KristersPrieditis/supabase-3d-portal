@@ -2,14 +2,19 @@
 
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import GlowingCube from './components/GlowingCube' 
+
 
 export default function HomePage() {
   const router = useRouter()
 
   return (
-    <main className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)] p-6">
+    <main className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)] p-6 overflow-hidden">
+      {/* Glowing 3D Cube background */}
+      <GlowingCube />
+
       {/* Logo in top-left corner */}
-      <div className="absolute top-7 left-6">
+      <div className="absolute top-7 left-6 z-10">
         <Image
           src="/Logo White.png"
           alt="3D Portal Logo"
@@ -18,48 +23,41 @@ export default function HomePage() {
         />
       </div>
 
-      <div className="absolute top-1/2 left-20 transform -translate-y-1/2">
-  <h1 className="text-9xl font-bold leading-tight text-left">
-    <span className="block">Art</span>
-    <span className="block">Space</span>
-  </h1>
-</div>
+      {/* Hero Text */}
+      <div className="absolute top-1/2 left-20 transform -translate-y-1/2 z-10">
+        <h1 className="text-9xl font-bold leading-tight text-left">
+          <span className="block">Art</span>
+          <span className="block">Space</span>
+        </h1>
+      </div>
 
-
-
-
-
-{/* Buttons in top-right corner */}
-<div className="absolute top-6 right-6 flex gap-4">
-  <button
-    onClick={() => router.push('/login')}
-    className="px-6 py-2 rounded-xl transition-colors text-white hover:text-[#4d7a7f] hover:border-[#4d7a7f]"
-    style={{ border: '1px solid rgba(255, 255, 255, 0.41)' }}
-  >
-    Login
-  </button>
-  <button
-    onClick={() => router.push('/dashboard')}
-    className="px-6 py-2 rounded-xl transition-colors text-white hover:text-[#4d7a7f] hover:border-[#4d7a7f]"
-    style={{ border: '1px solid rgba(255, 255, 255, 0.41)' }}
-  >
-    Dashboard
-  </button>
-</div>
-
-
-
+      {/* Buttons in top-right corner */}
+      <div className="absolute top-6 right-6 flex gap-4 z-10">
+        <button
+          onClick={() => router.push('/login')}
+          className="px-6 py-2 rounded-xl transition-colors text-white hover:text-[#4d7a7f] hover:border-[#4d7a7f]"
+          style={{ border: '1px solid rgba(255, 255, 255, 0.41)' }}
+        >
+          Login
+        </button>
+        <button
+          onClick={() => router.push('/dashboard')}
+          className="px-6 py-2 rounded-xl transition-colors text-white hover:text-[#4d7a7f] hover:border-[#4d7a7f]"
+          style={{ border: '1px solid rgba(255, 255, 255, 0.41)' }}
+        >
+          Dashboard
+        </button>
+      </div>
 
       {/* Thin horizontal line below header */}
       <div
-        className="absolute top-20 left-0 w-full"
+        className="absolute top-20 left-0 w-full z-10"
         style={{ borderTop: '0.5px solid rgba(255, 255, 255, 0.41)' }}
       />
-
-      {/* Add centered content below if needed */}
     </main>
   )
 }
+
 
 
 
