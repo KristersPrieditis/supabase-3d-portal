@@ -142,7 +142,8 @@ try {
   }
   
   }
-
+  
+//redirect user to the login page
   const handleLogout = async () => {
     await supabase.auth.signOut()
     router.push('/login')

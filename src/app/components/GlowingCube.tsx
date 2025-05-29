@@ -18,8 +18,8 @@ function RotatingCube() {
     <mesh ref={cubeRef}>
       <boxGeometry args={[3.2, 3.2, 3.2]} />
       <meshPhysicalMaterial
-        color="#5a8d92"                      // very dark base
-        emissive="#5a8d92"                  // glowing edges
+        color="#5A8D92"                      // very dark base
+        emissive="#5A8D92"                  // glowing edges
         emissiveIntensity={0.2}
         metalness={1}
         roughness={2}

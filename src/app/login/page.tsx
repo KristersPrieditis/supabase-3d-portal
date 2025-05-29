@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/supabaseClient'
+import Image from 'next/image'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -12,10 +13,7 @@ export default function LoginPage() {
 
   const handleLogin = async () => {
     setError(null)
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
 
     if (error) {
       setError(error.message)
@@ -26,10 +24,7 @@ export default function LoginPage() {
 
   const handleRegister = async () => {
     setError(null)
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-    })
+    const { error } = await supabase.auth.signUp({ email, password })
 
     if (error) {
       setError(error.message)
@@ -39,37 +34,83 @@ export default function LoginPage() {
   }
 
   return (
-    <main
-      className="flex flex-col items-center justify-center min-h-screen gap-4 p-6"
-      style={{ backgroundColor: '#4B5320' }}
-    >
-      <h1 className="text-2xl font-bold text-white">Login or Register</h1>
+    <main className="flex items-center justify-center min-h-screen bg-black p-6 relative">
+      
+      {/* Logo in top-left corner */}
+      <div className="absolute top-7 left-6 z-10">
+        <Image
+          src="/Logo White.png"
+          alt="3D Portal Logo"
+          width={150}
+          height={150}
+        />
+      </div>
 
-      <input
-        type="email"
-        placeholder="Email"
-        className="p-2 border rounded w-64"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+       {/* Thin horizontal line below header */}
+       <div className="absolute top-20 left-0 w-full border-t border-white opacity-40 z-10" />
 
-      <input
-        type="password"
-        placeholder="Password"
-        className="p-2 border rounded w-64"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      {/* Top-right corner buttons */}
+      <div className="absolute top-6 right-6 flex gap-4 z-10">
+        <button
+          onClick={() => router.push('/login')}
+          className="px-6 py-2 rounded-xl transition-colors text-white bg-black hover:text-[#4d7a7f] hover:border-[#4d7a7f]"
+          style={{ border: '1px solid rgba(255, 255, 255, 0.41)' }}
+        >
+          Login
+        </button>
+        <button
+          onClick={() => router.push('/dashboard')}
+          className="px-6 py-2 rounded-xl transition-colors text-white bg-black hover:text-[#4d7a7f] hover:border-[#4d7a7f]"
+          style={{ border: '1px solid rgba(255, 255, 255, 0.41)' }}
+        >
+          Dashboard
+        </button>
+      </div>
 
-      {error && <p className="text-red-200">{error}</p>}
+      {/* Login Card */}
+      <div className="bg-[#2c2c2e] rounded-2xl shadow-lg p-10 w-full max-w-md text-white z-10">
+        <h2 className="text-4xl font-bold mb-2 text-center">Login</h2>
+        <p className="text-sm text-center mb-6">
+          Hey, Enter your details to sign in to your account
+        </p>
 
-      <button onClick={handleLogin} className="p-2 bg-blue-600 text-white rounded w-64">
-        Log In
-      </button>
+        <input
+  type="email"
+  placeholder="Email"
+  className="w-full mb-4 px-4 py-2 bg-[#2c2c2e] text-white border border-[#3a3a3c] rounded focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+/>
 
-      <button onClick={handleRegister} className="p-2 bg-green-600 text-white rounded w-64">
-        Register
-      </button>
+
+        <input
+          type="password"
+          placeholder="Password"
+          className="w-full mb-4 px-4 py-2 bg-[#2c2c2e] text-white border border-[#3a3a3c] rounded focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        {error && <p className="text-red-600 mb-4">{error}</p>}
+
+        <button
+          onClick={handleLogin}
+          className=" w-full px-6 py-2 rounded-xl transition-colors text-white hover:text-[#4d7a7f] hover:border-[#4d7a7f]"
+          style={{ border: '1px solid rgba(255, 255, 255, 0.41)' }}
+        >
+          Sign In
+        </button>
+
+        <p className="text-sm text-center mt-4 text-gray-600">
+          Don’t have an account?{' '}
+          <span
+            className="font-semibold text-black cursor-pointer"
+            onClick={handleRegister}
+          >
+            Request Now
+          </span>
+        </p>
+      </div>
     </main>
   )
 }
