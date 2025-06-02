@@ -29,6 +29,12 @@ export default function HomePage() {
         />
       </button>
 
+    {/*menu on the top left corner*/}
+    <div className="absolute top-7 left-6 z-10 flex gap-6 text-white text-lg">
+  <button onClick={() => router.push('/')} className="hover:underline">Home</button>
+  <button onClick={() => router.push('/learn')} className="hover:underline">Learn More</button>
+  <button onClick={() => router.push('/contact')} className="hover:underline">Contact</button>
+</div>
 
 
           {/* Thin horizontal line below header */}
