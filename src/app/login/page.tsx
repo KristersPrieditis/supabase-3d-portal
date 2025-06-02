@@ -36,20 +36,20 @@ export default function LoginPage() {
   return (
     <main className="flex items-center justify-center min-h-screen bg-black p-6 relative">
       
-     {/* Logo in top-left corner, button brings you to home page */}
-          <button
-            onClick={() => router.push('/')}
-            className="absolute top-7 left-6 z-10 cursor-pointer"
-            aria-label="Go to homepage"
-          >
-            <Image
-              src="/Logo White.png"
-              alt="3D Portal Logo"
-              width={150}
-              height={150}
-              priority
-            />
-          </button>
+        {/* Logo in top-left corner, button brings you to home page */}
+           <button
+             onClick={() => router.push('/')}
+             className="absolute top-7 left-1/2 transform -translate-x-1/2 z-10"
+             aria-label="Go to homepage"
+           >
+             <Image
+               src="/Logo White.png"
+               alt="3D Portal Logo"
+               width={220}
+               height={220}
+               priority
+             />
+           </button>
 
 
        {/* Thin horizontal line below header */}

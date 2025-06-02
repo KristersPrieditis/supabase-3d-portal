@@ -17,14 +17,14 @@ export default function HomePage() {
       {/* Logo in top-left corner, button brings you to home page */}
       <button
         onClick={() => router.push('/')}
-        className="absolute top-7 left-6 z-10 cursor-pointer"
+        className="absolute top-7 left-1/2 transform -translate-x-1/2 z-10"
         aria-label="Go to homepage"
       >
         <Image
           src="/Logo White.png"
           alt="3D Portal Logo"
-          width={150}
-          height={150}
+          width={220}
+          height={220}
           priority
         />
       </button>
