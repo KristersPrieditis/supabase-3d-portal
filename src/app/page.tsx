@@ -13,17 +13,24 @@ export default function HomePage() {
     <main className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)] p-6 overflow-hidden">
       {/* Glowing 3D Cube background */}
       <GlowingCube />
-
-      {/* Logo in top-left corner */}
-      <div className="absolute top-7 left-6 z-10">
+     
+      {/* Logo in top-left corner, button brings you to home page */}
+      <button
+        onClick={() => router.push('/')}
+        className="absolute top-7 left-6 z-10 cursor-pointer"
+        aria-label="Go to homepage"
+      >
         <Image
           src="/Logo White.png"
           alt="3D Portal Logo"
           width={150}
           height={150}
+          priority
         />
-      </div>
-       
+      </button>
+
+
+
           {/* Thin horizontal line below header */}
       <div
         className="absolute top-20 left-0 w-full z-10"
