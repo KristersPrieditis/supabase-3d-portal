@@ -32,7 +32,7 @@ export default function HomePage() {
     {/*menu on the top left corner*/}
     <div className="font-openSans absolute top-7 left-6 z-10 flex gap-6 text-white text-base">
   <button onClick={() => router.push('/')} className="hover:underline">HOME</button>
-  <button onClick={() => router.push('/learn')} className="hover:underline">LEARN MORE</button>
+  <button onClick={() => router.push('/about')} className="hover:underline">ABOUT US</button>
   <button onClick={() => router.push('/contact')} className="hover:underline">CONTACT</button>
 </div>
 
