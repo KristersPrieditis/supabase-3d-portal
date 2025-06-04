@@ -71,7 +71,7 @@ export default function HomePage() {
       Hello — welcome to <strong>ARtSpace</strong>!
     </p>
     <p className="text-xl leading-relaxed">
-      <strong>ARtSpace</strong> is a cutting-edge platform at the intersection of EdTech, XR, and the creator economy — built to empower visual artists through immersive technology.
+      <strong>ARtSpace</strong> is a cutting-edge platform at the intersection of EdTech, XR, and the creator economy  built to empower visual artists through immersive technology.
       Combining <strong>Virtual Reality (VR)</strong> & <strong>Augmented Reality (AR)</strong>, <strong>ARtSpace</strong> gives creators a powerful toolkit to curate, preserve, and share their work in completely new ways.
     </p>
   </div>
