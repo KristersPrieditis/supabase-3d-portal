@@ -56,7 +56,7 @@ export default function AboutPage() {
 
 <main className="flex flex-col items-center pt-10">
 
-        <div className="max-w-2xl text-white text-center px-4">
+        <div className="max-w-2xl text-white text-center px-10">
           <h1 className="text-6xl font-bold mb-4">About Us</h1>
           <p className="text-lg leading-relaxed mb-6">
             We’re a group of five passionate students from Hyper Island, currently diving into the XR Creative Development program. We’re excited to connect and collaborate, let’s create something amazing together!
