@@ -100,6 +100,13 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
+
+      {/* Footer */}
+<footer className="absolute bottom-4 w-full text-center z-10">
+  <p className="text-sm text-white/60 font-openSans">
+    © 2025 ArtSpace. All rights reserved.
+  </p>
+</footer>
       </main>
     </div>
   )

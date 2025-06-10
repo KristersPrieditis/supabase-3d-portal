@@ -120,7 +120,15 @@ export default function AboutPage() {
             <p className="text-sm opacity-60 mt-2"> Tel: +46 76 760 74 70</p>
           </div>
         </div>
+
+      {/* Footer */}
+<footer className="absolute bottom-4 w-full text-center z-10">
+  <p className="text-sm text-white/60 font-openSans">
+    © 2025 ArtSpace. All rights reserved.
+  </p>
+</footer>
       </main>
+      
     </div>
   )
 }
