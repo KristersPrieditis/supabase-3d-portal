@@ -8,7 +8,7 @@ export default function AboutPage() {
 
   return (
     <div className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)] font-openSans p-10">
-      {/* Logo in top-center */}
+      {/* Logo in top-center Kristers was here */}
       <button
         onClick={() => router.push('/')}
         className="absolute top-7 left-1/2 transform -translate-x-1/2 z-10"
