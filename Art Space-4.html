@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ArtSpace</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url("WhatsApp Image 2025-05-30 at 10.06.54_e23d7cc9.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header {
+      padding: 50px 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      max-width: 600px;
+      margin: 0 auto 20px;
+      color: #ccc;
+    }
+
+    .auth-buttons {
+      margin-top: 20px;
+    }
+
+    .auth-buttons button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 14px;
+      background-color: #4f46e5;
+      border: none;
+      border-radius: 25px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .auth-buttons button:hover {
+      background-color: #3730a3;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      padding: 20px;
+      width: 250px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #4f46e5;
+      border: none;
+      border-radius: 25px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #3730a3;
+    }
+
+    canvas {
+      display: block;
+      margin: 40px auto;
+      background: #111;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+    }
+
+    .gallery {
+      margin-top: 50px;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .gallery img {
+      width: 300px;
+      height: auto;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ART SPACE</h1>
+    <p>Explore and share mesmerizing 3D artworks at your place via AR.</p>
+    <div class="auth-buttons">
+      <button onclick="login()">Log In</button>
+      <button onclick="signup()">Sign Up</button>
+      <button onclick="logout()">Log Out</button>
+    </div>
+  </header>
+
+  <section class="features">
+    <div class="card">
+      <h2>Create</h2>
+      <p>Create your 3D art space using modern tools and techniques.</p>
+    </div>
+    <div class="card">
+      <h2>Upload</h2>
+      <p>Share your work with the world and receive feedback.</p>
+    </div>
+    <div class="card">
+      <h2>Gallery</h2>
+      <p>Browse stunning 3D artworks .</p>
+    </div>
+  </section>
+
+  <canvas id="threeCanvas" width="600" height="400"></canvas>
+
+  <button onclick="joinCommunity()">Join the Community</button>
+
+  <section class="gallery">
+    <h2>Art Installation Preview</h2>
+    <img src="WhatsApp Image 2025-05-30 at 10.06.54_e23d7cc9.jpg" alt="Glass artwork with blue tones by Kim">
+    <img src="WhatsApp Image 2025-05-30 at 10.06.54_5605bb7f.jpg" alt="Intricate glass sculpture by Kim">
+    <img src="WhatsApp Image 2025-05-30 at 10.05.32_49a57c8f.jpg" alt="Glass art storage room with various pieces">
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r148/three.min.js"></script>
+  <script>
+    function joinCommunity() {
+      alert("Thanks for your interest! Community features coming soon.");
+    }
+
+    function login() {
+      alert("Login feature coming soon!");
+    }
+
+    function signup() {
+      alert("Signup feature coming soon!");
+    }
+
+    function logout() {
+      alert("You have been logged out!");
+    }
+
+    // Three.js scene with rotating cube
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, 600 / 400, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('threeCanvas') });
+    renderer.setSize(600, 400);
+
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshStandardMaterial({ color: 0x4f46e5 });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+    const light = new THREE.PointLight(0xffffff, 1, 100);
+    light.position.set(5, 5, 5);
+    scene.add(light);
+
+    camera.position.z = 3;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
